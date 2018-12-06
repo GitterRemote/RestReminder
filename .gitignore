@@ -1,0 +1,7 @@
+*.pyc
+.DS_Store
+.ropeproject
+*.egg-info
+
+dist
+build
