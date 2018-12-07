@@ -98,7 +98,11 @@ class Driver(object):
                 logger.debug("Driver: count down 10s")
                 self._wait(10)
                 logger.debug("Driver: 10s drain")
-                self._mouse_q.get_nowait()  # empty queue
+
+                try:
+                    self._mouse_q.get_nowait()  # to empty queue
+                except queue.Empty:
+                    pass
                 self._first_move_time = None
 
                 continue
