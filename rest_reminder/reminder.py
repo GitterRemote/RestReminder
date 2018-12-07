@@ -84,7 +84,7 @@ class Driver(object):
 
             if time.time() - self._first_move_time >= self._interval:
                 logger.debug("Driver: show ReminderBox")
-                ReminderBox("ss").show(block=False)
+                ReminderBox("20-20-20").show(block=False)
                 logger.debug("Driver: count down 10s")
                 self._wait(10)
                 logger.debug("Driver: 10s drain")
