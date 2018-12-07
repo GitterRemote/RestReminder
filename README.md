@@ -13,9 +13,10 @@ Reminds you every 20 min if you are working in front of computer.
 
 ## Usage
 1. install 
-```
-git clone https://github.com/GitterRemote/RestReminder
-python setup.py install 
+```bash
+$ git clone https://github.com/GitterRemote/RestReminder
+$ cd RestReminder
+$ python setup.py install 
 ```
 It is compatible with python 2 & 3, and well works on the MacOs.
 
