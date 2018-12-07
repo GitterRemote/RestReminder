@@ -11,8 +11,9 @@ except ImportError:
 from pynput import mouse
 
 
-logging.basicConfig(stream=sys.stdout, level=logging.DEBUG)
-logger = logging.getLogger()
+logging.basicConfig(stream=sys.stdout, level=logging.DEBUG,
+                    format="[%(levelname)s]%(asctime)s %(name)s:%(message)s")
+logger = logging.getLogger(__name__)
 
 
 class Reminder(object):
