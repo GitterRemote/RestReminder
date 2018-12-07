@@ -66,6 +66,13 @@ class Driver(object):
         if self._stop_event.is_set():
             raise Exception("Stop Error")
 
+    def _wait_mouse_move(self):
+        try:
+            self._mouse_q.get_nowait()  # to empty queue
+        except queue.Empty:
+            pass
+        self._mouse_q.get()
+
     def start(self):
         logger.debug("Driver: interval " + str(self._interval))
         while True:
@@ -85,11 +92,15 @@ class Driver(object):
             if time.time() - self._first_move_time >= self._interval:
                 logger.debug("Driver: show ReminderBox")
                 ReminderBox("20-20-20").show(block=False)
+
+                # 10s for user to click Ok
+                self._wait_mouse_move()
                 logger.debug("Driver: count down 10s")
                 self._wait(10)
                 logger.debug("Driver: 10s drain")
                 self._mouse_q.get_nowait()  # empty queue
                 self._first_move_time = None
+
                 continue
 
             self._wait(1)
